@@ -1,0 +1,3 @@
+# xyrise-configurations
+
+Personal configurations.
