@@ -14,6 +14,9 @@ autocmd BufRead,BufNewFile *.tex set filetype=plaintex
 " .h files as C instead of C++
 let g:c_syntax_for_h = 1
 
+" C++ Syntax Formatting
+set cinoptions=h0N-s
+
 " ===Tabs===
 set tabstop=2  " show existing tab as 2 spaces
 set softtabstop=2
@@ -22,12 +25,17 @@ set expandtab  " insert spaces instead of tab
 set smarttab
 " ===/Tabs===
 
+" ===Whitespace Display===
+set listchars+=lead:.
+set list
+" ===/Whitespace Display===
+
 " ===Trim Trailing Whitespace===
 fun! <SID>StripTrailingWhitespaces()
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	call cursor(l, c)
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
 endfun
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
