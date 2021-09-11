@@ -25,6 +25,8 @@ set expandtab  " insert spaces instead of tab
 set smarttab
 " ===/Tabs===
 
+autocmd BufNewFile,BufRead ~/Projects/BlackPanther/* set noexpandtab
+
 " ===Whitespace Display===
 set listchars+=lead:.
 set list
@@ -45,6 +47,8 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 command E e
 command W w
 command Q q
+command QA qa
+command Qa qa
 command Wq wq
 command WQ wq
 " ===/WQE Capitalization Fix===
@@ -57,14 +61,24 @@ nnoremap ; :
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'arcticicestudio/nord-vim'
+
 Plug 'ziglang/zig.vim'
 call plug#end()
 " ===/Plugin Load===
+
+set termguicolors
+colorscheme nord
 
 " ===vim-gitgutter===
 set updatetime=100
 " ===/vim-gitgutter===
 
-set termguicolors
-colorscheme dracula
+" ===fzf===
+nmap <C-P> :FZF<CR>
+" ===/fzf===
+
+" ===nord-vim===
+let g:nord_cursor_line_number_background = 1
+" ===/nord-vim===
