@@ -15,7 +15,8 @@ autocmd BufRead,BufNewFile *.tex set filetype=plaintex
 let g:c_syntax_for_h = 1
 
 " C++ Syntax Formatting
-set cinoptions=h0N-s
+set cinoptions=h0,N-s,{0,t0
+set autoindent
 
 " ===Tabs===
 set tabstop=2  " show existing tab as 2 spaces
