@@ -26,7 +26,9 @@ set expandtab  " insert spaces instead of tab
 set smarttab
 " ===/Tabs===
 
-autocmd BufNewFile,BufRead ~/Projects/BlackPanther/* set noexpandtab
+" ===Vertical Columns===
+set colorcolumn=80,120
+" ===/Vertical Columns===
 
 " ===Whitespace Display===
 set listchars+=lead:.
