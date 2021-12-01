@@ -9,6 +9,8 @@ set relativenumber
 set foldmethod=syntax
 set nofoldenable
 
+set cursorline
+
 autocmd BufRead,BufNewFile *.tex set filetype=plaintex
 
 " .h files as C instead of C++
