@@ -66,6 +66,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'arcticicestudio/nord-vim'
 
 Plug 'ziglang/zig.vim'
+Plug 'zah/nim.vim'
 call plug#end()
 " ===/Plugin Load===
 
@@ -83,3 +84,15 @@ nmap <C-P> :FZF<CR>
 " ===nord-vim===
 let g:nord_cursor_line_number_background = 1
 " ===/nord-vim===
+
+" ===nim.vim===
+fun! JumpToDef()
+  if exists("*GotoDefinition_" . &filetype)
+    call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
+" ===/nim.vim===
