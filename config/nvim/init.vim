@@ -13,6 +13,10 @@ set cursorline
 
 autocmd BufRead,BufNewFile *.tex set filetype=plaintex
 
+if &compatible
+  set nocompatible
+endif
+
 " .h files as C instead of C++
 let g:c_syntax_for_h = 1
 
@@ -62,16 +66,25 @@ command WQ wq
 nnoremap ; :
 " ===/Semicolon to Colon===
 
-" ===Plugin Load===
-call plug#begin(stdpath('data') . '/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'arcticicestudio/nord-vim'
 
-Plug 'ziglang/zig.vim'
-Plug 'zah/nim.vim'
-call plug#end()
+" ===Plugin Load===
+fun! PackInit() abort
+  packadd minpac
+  call minpac#init()
+
+  call minpac#add('vim-airline/vim-airline')
+  call minpac#add('airblade/vim-gitgutter')
+  call minpac#add('junegunn/fzf')
+  call minpac#add('junegunn/fzf.vim', {'do': {-> fzf#install()}})
+  call minpac#add('arcticicestudio/nord-vim')
+
+  call minpac#add('ziglang/zig.vim')
+  call minpac#add('zah/nim.vim')
+endf
+
+command! PackUpdate call PackInit() | call minpac#update()
+command! PackClean  call PackInit() | call minpac#clean()
+command! PackStatus packadd minpac | call minpac#status()
 " ===/Plugin Load===
 
 set termguicolors
