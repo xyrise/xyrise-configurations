@@ -71,11 +71,12 @@ nnoremap ; :
 fun! PackInit() abort
   packadd minpac
   call minpac#init()
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   call minpac#add('vim-airline/vim-airline')
   call minpac#add('airblade/vim-gitgutter')
   call minpac#add('junegunn/fzf')
-  call minpac#add('junegunn/fzf.vim', {'do': {-> fzf#install()}})
+  call minpac#add('junegunn/fzf.vim')
   call minpac#add('arcticicestudio/nord-vim')
 
   call minpac#add('ziglang/zig.vim')
